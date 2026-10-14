@@ -32,8 +32,8 @@ jobs:
 
       # O GitHub desliga agendamentos de repositórios sem atividade por 60 dias.
       # Uma vez por mês (dia 1, disparo das 08h) registra um commit para manter ativo.
-      - name: Manter o agendamento ativo
-        if: github.event_name == 'schedule' && github.event.schedule == '0 11,15,21 * * *'
+      - name: Baixar o repositório (para o commit mensal)
+        if: github.event_name == 'schedule'
         uses: actions/checkout@v4
       - name: Commit mensal
         if: github.event_name == 'schedule'
